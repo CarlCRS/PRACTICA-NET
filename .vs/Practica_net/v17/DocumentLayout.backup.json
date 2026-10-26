@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|c:\\users\\cchica\\documents\\capacitaciones full\\practica net\\practica\\capacitacion\\practica_net\\practica_net1\\modelo\\productofisico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|solutionrelative:practica_net1\\modelo\\productofisico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|c:\\users\\cchica\\documents\\capacitaciones full\\practica net\\practica\\capacitacion\\practica_net\\practica_net1\\modelo\\aproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|solutionrelative:practica_net1\\modelo\\aproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|c:\\users\\cchica\\documents\\capacitaciones full\\practica net\\practica\\capacitacion\\practica_net\\practica_net1\\modelo\\productodigital.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|solutionrelative:practica_net1\\modelo\\productodigital.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|c:\\users\\cchica\\documents\\capacitaciones full\\practica net\\practica\\capacitacion\\practica_net\\practica_net1\\modelo\\pservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0ABD9E4A-DF10-43C2-AE55-7C904259224A}|Practica_net1\\Practica_net1_LogiTrack.csproj|solutionrelative:practica_net1\\modelo\\pservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PServicio.cs",
+              "DocumentMoniker": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\PServicio.cs",
+              "RelativeDocumentMoniker": "Practica_net1\\Modelo\\PServicio.cs",
+              "ToolTip": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\PServicio.cs",
+              "RelativeToolTip": "Practica_net1\\Modelo\\PServicio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T15:44:58.843Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductoDigital.cs",
+              "DocumentMoniker": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\ProductoDigital.cs",
+              "RelativeDocumentMoniker": "Practica_net1\\Modelo\\ProductoDigital.cs",
+              "ToolTip": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\ProductoDigital.cs",
+              "RelativeToolTip": "Practica_net1\\Modelo\\ProductoDigital.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T15:44:36.448Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductoFisico.cs",
+              "DocumentMoniker": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\ProductoFisico.cs",
+              "RelativeDocumentMoniker": "Practica_net1\\Modelo\\ProductoFisico.cs",
+              "ToolTip": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\ProductoFisico.cs",
+              "RelativeToolTip": "Practica_net1\\Modelo\\ProductoFisico.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T15:44:13.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AProducto.cs",
+              "DocumentMoniker": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\AProducto.cs",
+              "RelativeDocumentMoniker": "Practica_net1\\Modelo\\AProducto.cs",
+              "ToolTip": "C:\\Users\\cchica\\Documents\\Capacitaciones Full\\PRACTICA NET\\PRACTICA\\Capacitacion\\Practica_net\\Practica_net1\\Modelo\\AProducto.cs",
+              "RelativeToolTip": "Practica_net1\\Modelo\\AProducto.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wB0AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-21T14:59:13.821Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
