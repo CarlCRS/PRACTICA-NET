@@ -1,27 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Practica_net1_LogiTrack.Modelo
 {
-    internal class ProductoFisico : AProducto
+    public class ProductoFisico : AProducto
     {
+        private const decimal CostoKg = 2.5m;
+
         public decimal PesoKg { get; }
-        private const decimal Costokg = 2.5m;
-        public ProductoFisico(string nombre, decimal precio, decimal pesoKg ) : base(nombre, precio)
+
+        public ProductoFisico(string nombre, decimal precio, decimal pesoKg) : base(nombre, precio)
         {
             if (pesoKg <= 0)
-            {
-                throw new ArgumentException("El peso no puede ser 0 o inferior");
-            }
+                throw new ArgumentException("El peso no puede ser 0 o inferior", nameof(pesoKg));
+
             PesoKg = pesoKg;
         }
 
-        public override decimal calcularCosto()
-        {
-           return Precio + (PesoKg* Costokg);
-        }
+        // Solo el envío; el PrecioBase lo suma ObtenerTotalCosto de la clase base.
+        public override decimal calcularCosto() => PesoKg * CostoKg;
     }
 }

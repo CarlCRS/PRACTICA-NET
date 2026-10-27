@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Practica_net1_LogiTrack.Modelo
 {
-    internal class ProductoDigital
+    public class ProductoDigital : AProducto
     {
+        public string UrlDescarga { get; }
+
+        public ProductoDigital(string nombre, decimal precio, string urlDescarga) : base(nombre, precio)
+        {
+            if (string.IsNullOrWhiteSpace(urlDescarga))
+                throw new ArgumentException("La URL de descarga no puede estar vacía", nameof(urlDescarga));
+
+            UrlDescarga = urlDescarga;
+        }
+
+        public override decimal calcularCosto() => 0m;
     }
 }
