@@ -4,7 +4,10 @@ namespace Practica_net1_LogiTrack.Modelo
     {
         public string UrlDescarga { get; }
 
-        public ProductoDigital(string nombre, decimal precio, string urlDescarga) : base(nombre, precio)
+        public override TipoProducto Tipo => TipoProducto.Digital;
+
+        public ProductoDigital(string nombre, decimal precio, string sku, string urlDescarga)
+            : base(nombre, precio, sku)
         {
             if (string.IsNullOrWhiteSpace(urlDescarga))
                 throw new ArgumentException("La URL de descarga no puede estar vacía", nameof(urlDescarga));

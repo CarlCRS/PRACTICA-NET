@@ -6,7 +6,9 @@ namespace Practica_net1_LogiTrack.Modelo
 
         public decimal PesoKg { get; }
 
-        public ProductoFisico(string nombre, decimal precio, decimal pesoKg) : base(nombre, precio)
+        public override TipoProducto Tipo => TipoProducto.Fisico;
+
+        public ProductoFisico(string nombre, decimal precio, string sku, decimal pesoKg) : base(nombre, precio, sku)
         {
             if (pesoKg <= 0)
                 throw new ArgumentException("El peso no puede ser 0 o inferior", nameof(pesoKg));

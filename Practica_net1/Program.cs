@@ -1,78 +1,46 @@
-﻿using Practica_net1_LogiTrack.Modelo;
-using Practica_net1_LogiTrack.Pedidos;
-using Practica_net1_LogiTrack.Usuarios;
-using Practica_net1_LogiTrack.Servicios;
+﻿using Practica_net1_LogiTrack.Datos;
+using Practica_net1_LogiTrack.Reportes;
 
 Console.WriteLine("=============================================");
-Console.WriteLine("  LogiTrack - Demo dominio (Módulo 01)");
+Console.WriteLine("  LogiTrack - Reportes de negocio (Módulo 02)");
 Console.WriteLine("=============================================\n");
 
-// 1) Productos de los 3 tipos
-Console.WriteLine("--- 1) Productos (3 tipos) ---");
+var datos = GeneradorDatos.Generar();
+var reportes = new ReportesLogiTrack(datos);
 
-var productos = new List<AProducto>
-{
-    new ProductoFisico("Notebook Lenovo", 850000m, 3.2m),
-    new ProductoDigital("Licencia Antivirus", 12000m, "https://descargas.logitrack.com/av-123"),
-    new PServicio("Instalación y configuración", 45000m, DateTime.Now.AddDays(3), 2m)
-};
+Console.WriteLine($"Catálogo: {datos.Catalogo.Count} productos | Usuarios: {datos.Usuarios.Count} | Pedidos: {datos.Pedidos.Count} | Inventario: {datos.Inventario.Productos.Count} SKUs");
 
-foreach (var producto in productos)
-    Console.WriteLine($"[{producto.ID}] {producto.Nombre} -> Total: {producto.ObtenerTotalCosto():C}");
+// 1) Clientes con mayor monto comprado
+Console.WriteLine("\n--- 1) Clientes con mayor monto comprado ---");
+foreach (var r in reportes.VentasPorCliente())
+    Console.WriteLine($"   {r.Cliente}: {r.TotalComprado:C} en {r.Pedidos} pedidos");
 
-// 2) Permisos por rol
-Console.WriteLine("\n--- 2) Usuarios y permisos por rol ---");
+// 2) Ingresos por tipo de producto y periodo
+Console.WriteLine("\n--- 2) Ingresos por tipo de producto y periodo ---");
+foreach (var r in reportes.IngresosPorTipoYPeriodo())
+    Console.WriteLine($"   {r.Periodo} | {r.TipoProducto,-9} | {r.Unidades} unidades | {r.Ingresos:C}");
 
-AUsuario cliente = new Cliente("María Gómez", "maria@mail.com");
-AUsuario bodeguero = new Bodeguero("Juan Pérez", "juan.bodega@logitrack.com");
-AUsuario admin = new Administrador("Ana Sosa", "ana.admin@logitrack.com");
+// 3) Productos con inventario bajo
+Console.WriteLine("\n--- 3) Productos con inventario bajo (< 50% del stock inicial) ---");
+var bajo = reportes.InventarioBajo();
+if (bajo.Count == 0)
+    Console.WriteLine("   Ningún producto por debajo del umbral");
+foreach (var r in bajo)
+    Console.WriteLine($"   [{r.SKU}] {r.Nombre}: {r.StockActual}/{r.StockInicial} ({r.PorcentajeRestante}%)");
 
-VerPermisos(cliente, Permisos.CrearPedido, Permisos.GestionarStock);
-VerPermisos(bodeguero, Permisos.GestionarStock, Permisos.CrearPedido);
-VerPermisos(admin, Permisos.VerReportes, Permisos.VerPedidosPropios);
+// 4) Clientes con pedidos en más de un estado
+Console.WriteLine("\n--- 4) Clientes con pedidos en más de un estado ---");
+foreach (var r in reportes.ClientesConVariosEstados())
+    Console.WriteLine($"   {r.Cliente}: {string.Join(", ", r.Estados)}");
 
-// 3) Pedido con productos de distintos tipos, pago y notificación
-Console.WriteLine("\n--- 3) Pedido (mezcla de tipos + total + pago + notificación) ---");
-
-var pedido = new Pedido(
-    cliente: (Cliente)cliente,
-    pago: new PagoTarjeta(limitePorOperacion: 9000000m),
-    notificador: new NotificadorEmail("maria@mail.com"));
-
-foreach (var producto in productos)
-    pedido.AgregarProducto(producto);
-
-Console.WriteLine($"Productos en el pedido #{pedido.Numero}: {pedido.Productos.Count}");
-Console.WriteLine($"Total del pedido: {pedido.CalcularTotal():C}");
-string comprobante = pedido.Confirmar();
-Console.WriteLine($"Comprobante generado: {comprobante}");
-
-// 4) Pago rechazado con otra implementación de pago
-Console.WriteLine("\n--- 4) Pedido con pago rechazado (transferencia + monto mínimo) ---");
-
-var pedidoChico = new Pedido(
-    cliente: (Cliente)cliente,
-    pago: new PagoTransferencia(),
-    notificador: new NotificadorSMS("+54 9 11 5555-0000"));
-
-pedidoChico.AgregarProducto(new ProductoDigital("Ebook C#", 3000m, "https://descargas.logitrack.com/ebook-cs"));
-
-try
-{
-    pedidoChico.Confirmar();
-}
-catch (InvalidOperationException ex)
-{
-    Console.WriteLine($"Pago rechazado correctamente -> {ex.Message}");
-}
+// 5) Clientes en riesgo comercial
+Console.WriteLine("\n--- 5) Clientes en riesgo (sin comprar > 60 días o promedio < $30.000) ---");
+var riesgo = reportes.ClientesEnRiesgo();
+if (riesgo.Count == 0)
+    Console.WriteLine("   Ningún cliente en riesgo");
+foreach (var r in riesgo)
+    Console.WriteLine($"   {r.Cliente}: última compra {r.UltimaCompra:dd/MM/yyyy} ({r.DiasSinComprar} días) | promedio {r.PromedioCompra:C}");
 
 Console.WriteLine("\n=============================================");
-Console.WriteLine("  Demo finalizada sin errores de dominio.");
+Console.WriteLine("  Reportes finalizados.");
 Console.WriteLine("=============================================");
-
-static void VerPermisos(AUsuario usuario, params Permisos[] aProbar)
-{
-    Console.WriteLine($"{usuario.GetType().Name} ({usuario.Nombre}): tiene {usuario.Permisos.Count} permisos.");
-    foreach (var permiso in aProbar)
-        Console.WriteLine($"   ¿{permiso}? -> {(usuario.TienePermiso(permiso) ? "SÍ" : "NO")}");
-}

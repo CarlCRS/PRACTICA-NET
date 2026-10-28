@@ -7,8 +7,10 @@ namespace Practica_net1_LogiTrack.Modelo
         public DateTime FechaAgenda { get; }
         public decimal DuracionHoras { get; }
 
-        public PServicio(string nombre, decimal precio, DateTime fechaAgenda, decimal duracionHoras)
-            : base(nombre, precio)
+        public override TipoProducto Tipo => TipoProducto.Servicio;
+
+        public PServicio(string nombre, decimal precio, string sku, DateTime fechaAgenda, decimal duracionHoras)
+            : base(nombre, precio, sku)
         {
             if (fechaAgenda <= DateTime.Now)
                 throw new ArgumentException("La fecha del servicio debe ser futura", nameof(fechaAgenda));

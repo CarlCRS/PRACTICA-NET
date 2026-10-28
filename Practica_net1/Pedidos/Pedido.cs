@@ -11,17 +11,20 @@ namespace Practica_net1_LogiTrack.Pedidos
         public int Numero { get; }
         public Cliente Cliente { get; }
         public IReadOnlyList<AProducto> Productos => _productos.AsReadOnly();
+        public DateTime Fecha { get; }
+        public EstadoPedido Estado { get; private set; } = EstadoPedido.Pendiente;
 
         private readonly IPago _pago;
         private readonly INotificador _notificador;
 
-        public Pedido(Cliente cliente, IPago pago, INotificador notificador)
+        public Pedido(Cliente cliente, IPago pago, INotificador notificador, DateTime? fecha = null)
         {
             Cliente = cliente ?? throw new ArgumentNullException(nameof(cliente));
             _pago = pago ?? throw new ArgumentNullException(nameof(pago));
             _notificador = notificador ?? throw new ArgumentNullException(nameof(notificador));
 
             Numero = ++_contador;
+            Fecha = fecha ?? DateTime.Now;
         }
 
         public void AgregarProducto(AProducto producto)
@@ -30,6 +33,14 @@ namespace Practica_net1_LogiTrack.Pedidos
                 throw new ArgumentNullException(nameof(producto));
 
             _productos.Add(producto);
+        }
+
+        public void CambiarEstado(EstadoPedido nuevoEstado)
+        {
+            if (nuevoEstado == EstadoPedido.Pendiente && Estado != EstadoPedido.Pendiente)
+                throw new InvalidOperationException("No se puede volver a Pendiente");
+
+            Estado = nuevoEstado;
         }
 
         // Recorre la abstracción común: cada producto aporta su total sin if/switch.
@@ -50,6 +61,7 @@ namespace Practica_net1_LogiTrack.Pedidos
 
             string comprobante = _pago.Procesar(total);
             _notificador.Enviar($"Pedido #{Numero} confirmado para {Cliente.Nombre}. Total: {total:C}. Comprobante: {comprobante}.");
+            Estado = EstadoPedido.Confirmado;
             return comprobante;
         }
     }
