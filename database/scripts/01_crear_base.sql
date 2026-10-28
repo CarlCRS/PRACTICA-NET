@@ -1,0 +1,10 @@
+-- 01 - Crear la base desde cero (idempotente)
+IF DB_ID('LogiTrackDB') IS NOT NULL
+BEGIN
+    ALTER DATABASE LogiTrackDB SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE LogiTrackDB;
+END
+GO
+
+CREATE DATABASE LogiTrackDB;
+GO
