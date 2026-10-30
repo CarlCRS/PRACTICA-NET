@@ -8,6 +8,9 @@ public class EfCoreRepositorio
 
     public EfCoreRepositorio(LogiTrackContext db) => _db = db;
 
+    public Usuario? ObtenerUsuarioPorNombre(string nombre) =>
+        _db.Usuarios.FirstOrDefault(u => u.Nombre == nombre);
+
     public List<Producto> ObtenerProductos() => _db.Productos.ToList();
 
     public List<PedidoConDetalle> ObtenerPedidosConDetalle()
